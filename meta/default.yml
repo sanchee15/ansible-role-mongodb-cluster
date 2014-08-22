@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: Berry Langerak
+  description: A role for installing and configuring mongodb.
+  company: Enrise
+  license: MIT
+  min_ansible_version: 1.5
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+
+categories:
+- database
+- database:nosql
+
+dependencies: []
