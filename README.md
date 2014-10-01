@@ -17,7 +17,7 @@ To use this role, build a vars file (vars/mongodb.yml, for example) which you in
 which contains something like the following:
 
     mongodb_users:
-     - { name: username, password: password, database: dbname }
+     - { username: username, password: password, database: dbname }
 
 Next, you can include the role in your playbook:
 
