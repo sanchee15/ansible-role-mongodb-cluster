@@ -4,7 +4,7 @@ This is an Ansible task for installing and configuring MongoDB, as well as creat
 
 ## Requirements
 
-- Tested on Ansible 1.5
+- Tested on Ansible 1.6
 - Tested on Ubuntu 14.04 (trusty), but it should work on any modern Debian based system.
 
 ## Dependencies
