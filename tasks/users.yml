@@ -1,7 +1,7 @@
 ---
 - name: Add MongoDB users
   mongodb_user: >
-    database="foo"
+    database="{{ item.database }}"
     name="{{ item.username }}"
     password="{{ item.password }}"
     roles="{{ item.roles | default('readWrite,dbAdmin,userAdmin') }}"
