@@ -1,6 +1,6 @@
-# enrise.mongodb
+# sancheeta.mongodb-cluster
 
-This is an Ansible task for installing and configuring MongoDB, as well as creating users and databases.
+This is an Ansible task for installing and configuring MongoDB clusters.
 
 ## Requirements
 
@@ -26,12 +26,9 @@ Next, you can include the role in your playbook:
       vars_files:
         - vars/mongodb.yml
       roles:
-        - enrise.mongodb
+        - sancheeta.mongodb
 
 ## Licence
 
 MIT
 
-## Feedback? Found a bug? Requests?
-
-Let us have it! http://github.com/Enrise/ansible-role-mongodb/issues
