@@ -1,8 +1,7 @@
 ---
 galaxy_info:
-  author: Berry Langerak
-  description: A role for installing and configuring mongodb.
-  company: Enrise
+  author: Sancheeta Kaushal
+  description: A role for installing and configuring mongodb cluster.
   license: MIT
   min_ansible_version: 1.5
 

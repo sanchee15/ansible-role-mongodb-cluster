@@ -15,10 +15,38 @@
     pkg: "mongodb-org"
     state: present
 
-- name: Make directory for storing data
-  command: cd /var/lib/mongodb/
-  command: mkdir shardedcluster
+- name: Create directory for storing mongo data
+  file: path=/var/lib/mongodb/shardedcluster/ state=directory mode=0755 recurse=yes
 
+- name: Create directory for storing mongo data
+  file: path=/var/lib/mongodb/shardedcluster/cfg/ state=directory mode=0755 recurse=yes
+
+- name: Create directory for storing mongo data
+  file: path=/var/lib/mongodb/shardedcluster/a/ state=directory mode=0755 recurse=yes
+
+- name: Create directory for storing mongo data
+  file: path=/var/lib/mongodb/shardedcluster/b/ state=directory mode=0755 recurse=yes
+
+- name: Create directory for storing mongo data
+  file: path=/var/lib/mongodb/shardedcluster/c/ state=directory mode=0755 recurse=yes
+
+- name: Create file for storing mongo data
+  file: path=/var/lib/mongodb/shardedcluster/log.cfg state=touch mode=0755
+
+- name: Create file for storing mongo data
+  file: path=/var/lib/mongodb/shardedcluster/log.a state=touch mode=0755
+
+- name: Create file for storing mongo data
+  file: path=/var/lib/mongodb/shardedcluster/log.b state=touch mode=0755
+
+- name: Create file for storing mongo data
+  file: path=/var/lib/mongodb/shardedcluster/log.c state=touch mode=0755
+
+- name: Create file for storing mongo data
+  file: path=/var/lib/mongodb/shardedcluster/log.started state=touch mode=0755
+
+- name: Run mongodb commands
+  command: mongod --configsvr --port 26050 --logpath /var/lib/mongodb/shardedcluster/log.cfg --logappend --dbpath /var/lib/mongodb/shardedcluster/cfg/ --fork 
 # - name: Ensure MongoDB is running
 #   service:
 #     name: mongod
