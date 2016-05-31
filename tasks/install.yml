@@ -15,14 +15,18 @@
     pkg: "mongodb-org"
     state: present
 
-- name: Ensure MongoDB is running
-  service:
-    name: mongod
-    state: started
+- name: Make directory for storing data
+  command: cd /var/lib/mongodb/
+  command: mkdir shardedcluster
 
-- name: Install pymongo if users are to be added.
-  apt: >
-    pkg={{ item }}
-  with_items:
-   - python-pymongo
-  when: mongodb_users|length > 0
+# - name: Ensure MongoDB is running
+#   service:
+#     name: mongod
+#     state: started
+
+# - name: Install pymongo if users are to be added.
+#   apt: >
+#     pkg={{ item }}
+#   with_items:
+#    - python-pymongo
+#   when: mongodb_users|length > 0
