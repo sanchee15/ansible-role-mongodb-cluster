@@ -7,13 +7,14 @@
 
 - name: Add mongodb repo
   apt_repository:
-    repo: "deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen"
+    repo: "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse"
     state: present
 
 - name: Install MongoDB
   apt:
     pkg: "mongodb-org"
     state: present
+    update_cache: yes
 
 - name: Create directory for storing mongo data
   file: path=/var/lib/mongodb/shardedcluster/ state=directory mode=0755 recurse=yes
@@ -45,8 +46,18 @@
 - name: Create file for storing mongo data
   file: path=/var/lib/mongodb/shardedcluster/log.started state=touch mode=0755
 
-- name: Run mongodb commands
+- name: Run mongodb config server
   command: mongod --configsvr --port 26050 --logpath /var/lib/mongodb/shardedcluster/log.cfg --logappend --dbpath /var/lib/mongodb/shardedcluster/cfg/ --fork 
+
+- name: Run Shard a
+  command: mongod --shardsvr --replSet a --dbpath /var/lib/mongodb/shardedcluster/a --logpath /var/lib/mongodb/shardedcluster/log.a --port 27000 --fork --logappend --smallfiles --oplogSize 50
+
+- name: Run Shard b
+  command: mongod --shardsvr --replSet b --dbpath /var/lib/mongodb/shardedcluster/b --logpath /var/lib/mongodb/shardedcluster/log.b --port 27001 --fork --logappend --smallfiles --oplogSize 50
+
+- name: Run Shard c
+  command: mongod --shardsvr --replSet c --dbpath /var/lib/mongodb/shardedcluster/c --logpath /var/lib/mongodb/shardedcluster/log.c --port 27002 --fork --logappend --smallfiles --oplogSize 50
+
 # - name: Ensure MongoDB is running
 #   service:
 #     name: mongod

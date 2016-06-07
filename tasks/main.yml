@@ -4,6 +4,3 @@
 
 - include: users.yml
   tags: [mongodb, mongodb-users]
-
-- include: services.yml
-  tags: [mongodb, mongodb-services]
